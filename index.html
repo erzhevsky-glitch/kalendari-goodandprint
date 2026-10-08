@@ -46,24 +46,25 @@
 
   /* ---- шапка ---- */
   .bar { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.5rem);
-    padding: var(--v-3) var(--v-gutter); background: rgb(232 235 238 / .72); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: background-color .3s var(--v-ease-out), box-shadow .3s var(--v-ease-out); }
-  .bar.is-scrolled { background: rgb(232 235 238 / .92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--v-hair); }
+    padding: var(--v-3) var(--v-gutter); background: var(--navy); color: #eef1f7; transition: background-color .3s var(--v-ease-out), box-shadow .3s var(--v-ease-out); }
+  .bar.is-scrolled { background: var(--navy); box-shadow: 0 6px 20px rgb(24 35 58 / .25); }
   .bar__logo { font-family: var(--v-font-display); font-weight: 800; font-size: 1.7rem; line-height: 1; letter-spacing: .01em; text-decoration: none; display: flex; align-items: center; gap: .5rem; }
-  .bar__logo i { width: .85rem; height: .66rem; border: 2px solid var(--v-accent); display: inline-block; }
-  .bar__contacts { display: grid; font-size: var(--v-t-xs); line-height: 1.35; color: var(--v-ink-soft); }
+  .bar__logo i { width: .85rem; height: .66rem; border: 2px solid #ff5a6e; display: inline-block; }
+  .bar__contacts { display: grid; font-size: var(--v-t-xs); line-height: 1.35; color: #b9c2d3; }
   .bar__contacts a { text-decoration: none; }
   .bar__nav { margin-left: auto; display: flex; align-items: center; gap: clamp(.8rem, 2vw, 1.8rem); font-size: var(--v-t-sm); font-weight: 500; }
   .bar__nav > a:not(.v-btn) { text-decoration: none; }
   .bar .v-btn { padding: .7em 1.25em; }
-  @media (hover: hover) and (pointer: fine) { .bar__nav > a:not(.v-btn):hover { color: var(--v-accent); } .v-btn:hover { background: #b00d27; } }
+  @media (hover: hover) and (pointer: fine) { .bar__nav > a:not(.v-btn):hover { color: #ffb3bf; } .v-btn:hover { background: #b00d27; } }
 
   /* ---- 1. первый экран ---- */
   .hero [data-v-stage] { background: #dfe3e7; }
   .hero .v-fill picture { position: absolute; inset: 0; }
-  .hero .v-fill img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+  .hero .v-fill { left: 36%; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24%); mask-image: linear-gradient(to right, transparent 0, #000 24%); }
+  .hero .v-fill img { width: 100%; height: 100%; object-fit: cover; object-position: 42% 50%; }
   .hero__scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none;
     background: radial-gradient(90% 100% at 0% 50%, rgb(236 239 242 / .85) 0%, rgb(236 239 242 / .45) 45%, transparent 72%); }
-  .hero__copy { position: absolute; z-index: 3; left: var(--v-gutter); top: clamp(6rem, 15vh, 9rem); width: min(52rem, 58vw); }
+  .hero__copy { position: absolute; z-index: 3; left: var(--v-gutter); top: clamp(7rem, 17vh, 10rem); width: min(52rem, 58vw); }
   .hero__copy .v-stack { gap: var(--v-5); }
   .hero h1 { font-size: clamp(3.2rem, 1.6rem + 4.2vw, 6.4rem); line-height: .92; }
   .hero__spec { font-size: var(--v-t-base); color: var(--v-ink-soft); max-width: 36ch; }
@@ -142,6 +143,14 @@
   .price h3 { font-family: var(--v-font-display); font-weight: 700; font-size: var(--v-t-2xl); line-height: .95; }
   .price p { color: var(--v-ink-soft); }
   .price__val { font-weight: 600; white-space: nowrap; }
+  .ptable { width: 100%; max-width: 46rem; border-collapse: collapse; margin-top: var(--v-6); }
+  .ptable caption { text-align: left; color: var(--v-ink-soft); font-size: var(--v-t-sm); padding-bottom: var(--v-4); }
+  .ptable th { text-align: left; font-weight: 500; font-size: var(--v-t-sm); color: var(--v-ink-soft); padding: var(--v-3) 0; border-bottom: 1px solid var(--v-hair-strong); }
+  .ptable td { padding: var(--v-4) 0; border-bottom: 1px solid var(--v-hair-strong); font-family: var(--v-font-display); font-weight: 700; font-size: var(--v-t-2xl); line-height: 1; }
+  .ptable td + td, .ptable th + th { text-align: right; }
+  .ptable td + td { color: var(--v-accent); }
+  .ptable td { white-space: nowrap; }
+  .ptable td small { font-family: var(--v-font-text); font-weight: 500; font-size: var(--v-t-base); color: var(--v-ink-soft); margin-right: .25em; }
   .v-page .prices__note { margin-top: var(--v-4); color: var(--v-ink-soft); font-size: var(--v-t-sm); max-width: 60ch; }
 
   /* ---- 10. контакты ---- */
@@ -159,9 +168,9 @@
   @media (max-width: 860px) {
     .bar__nav > a:not(.v-btn) { display: none; }
     .bar__logo { font-size: 1.4rem; }
-    .hero__copy { top: 5.2rem; width: auto; right: var(--v-gutter); }
+    .hero__copy { top: 5.8rem; width: auto; right: var(--v-gutter); }
     .hero__scrim { display: none; }
-    .hero .v-fill { top: 57%; }
+    .hero .v-fill { top: 57%; left: 0; -webkit-mask-image: none; mask-image: none; }
     .hero .v-fill img { object-position: 50% 82%; }
     .hero h1 { font-size: clamp(2.8rem, 12vw, 3.8rem); }
     .hero__spec { font-size: .95rem; }
@@ -199,7 +208,7 @@
     <nav class="bar__nav" aria-label="Разделы">
       <a href="#ceny">Цены</a>
       <a href="#kontakty">Контакты</a>
-      <a class="v-btn" href="#kontakty">Рассчитать заказ</a>
+      <a class="v-btn" href="https://wa.me/79260011677?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D0%B8." target="_blank" rel="noopener">Рассчитать заказ</a>
     </nav>
   </header>
 
@@ -219,7 +228,7 @@
             <p class="demo-for"><img src="assets/zakazchik.jpg" alt="" width="40" height="40"><span>Демо для Юлии Булгаковой · по заказу «Одностраничный продающий лендинг»</span></p>
             <h1 class="v-display" data-v-kinetic="lines">Квартальные календари премиум-качества</h1>
             <p class="hero__spec"><b>Формат «Миди»:</b> постер 335×230&nbsp;мм, подложка 335×210&nbsp;мм, рекламное поле 50&nbsp;мм.</p>
-            <div><a class="v-btn" href="#kontakty" data-v-magnet="0.25" data-v-rise="0">Рассчитать заказ</a></div>
+            <div><a class="v-btn" href="https://wa.me/79260011677?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D0%B8." target="_blank" rel="noopener" data-v-magnet="0.25" data-v-rise="0">Рассчитать заказ</a></div>
           </div>
         </div>
       </div>
@@ -287,7 +296,7 @@
       <div class="v-wrap">
         <div class="opt-sec__head" data-v-in>
           <h2 class="v-display v-display--md">Пикколо</h2>
-          <p>Два цвета на выбор.</p>
+          <p>Металлическая планка-курсор вместо обычного пластикового бегунка – золотая или серебряная.</p>
         </div>
         <div class="tiles tiles--2" data-v-in data-v-stagger="90">
           <figure class="tile"><div class="tile__ph tile__ph--gold"><span>Здесь будет ваше фото</span></div><figcaption><b>Золото</b></figcaption></figure>
@@ -338,8 +347,15 @@
     <section class="prices v-section v-section--tight" id="ceny" data-v-act="flow">
       <div class="v-wrap" data-v-in data-v-stagger="80">
         <h2 class="v-display v-display--md">Цены</h2>
-        <div class="price"><h3>Миди</h3><p>Постер 335×230&nbsp;мм, подложка 335×210&nbsp;мм, рекламное поле 50&nbsp;мм</p><span class="price__val">уточнить</span></div>
-        <p class="prices__note">Цена зависит от тиража, ламинации, цвета пружины и бумаги блоков. Напишите, сколько календарей нужно, – посчитаем под ваш заказ.</p>
+        <table class="ptable">
+          <caption>Формат «Миди»: постер 335×230&nbsp;мм, подложка 335×210&nbsp;мм, рекламное поле 50&nbsp;мм</caption>
+          <thead><tr><th scope="col">Тираж</th><th scope="col">Цена за календарь</th></tr></thead>
+          <tbody>
+            <tr><td><small>от</small> 50 шт.</td><td><small>от</small> 420 ₽</td></tr>
+            <tr><td><small>от</small> 100 шт.</td><td><small>от</small> 380 ₽</td></tr>
+          </tbody>
+        </table>
+        <p class="prices__note">Точная цена зависит от ламинации, цвета пружины и бумаги блоков. Напишите, сколько календарей нужно, – посчитаем под ваш заказ.</p>
       </div>
     </section>
 
@@ -349,11 +365,11 @@
         <div class="close__panel">
           <div data-v-in>
             <h2 class="v-display v-display--lg">Рассчитаем ваш тираж</h2>
-            <p class="v-lede v-soft" style="margin-top: var(--v-4)">Напишите, сколько календарей нужно, какую ламинацию, пружину и блоки выбрали, и пришлите логотип – ответим с ценой.</p>
-            <a class="v-btn" href="mailto:goodandprint@mail.ru?subject=%D0%A0%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D0%B5%D0%B9">Рассчитать заказ</a>
+            <p class="v-lede v-soft" style="margin-top: var(--v-4)">Напишите в WhatsApp, сколько календарей нужно, какую ламинацию, пружину и блоки выбрали, и пришлите логотип – ответим с ценой.</p>
+            <a class="v-btn" href="https://wa.me/79260011677?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D0%B8." target="_blank" rel="noopener">Рассчитать заказ</a>
           </div>
           <div class="close__meta" data-v-in data-v-stagger="60">
-            <span><b>Телефон</b><a href="tel:+79260011677">+7 (926) 001-16-77</a></span>
+            <span><b>Телефон и WhatsApp</b><a href="tel:+79260011677">+7 (926) 001-16-77</a></span>
             <span><b>Почта</b><a href="mailto:goodandprint@mail.ru">goodandprint@mail.ru</a></span>
             <span><b>Сайт</b><a href="https://www.goodandprint.ru" rel="noopener">www.goodandprint.ru</a></span>
           </div>
